@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarsShiba | Home</title>
+    <style>
+        /* Global Resets & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.5;
+        }
+
+        /* Header & Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid #2d2d2d;
+            position: sticky;
+            top: 0;
+            background-color: #000000;
+            z-index: 100;
+        }
+
+        .logo img {
+            width: 130px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            color: #ff6600;
+        }
+
+        /* Wallet Button */
+        .wallet-btn {
+            background-color: #ff6600;
+            color: #ffffff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .wallet-btn:hover {
+            background-color: #e65c00;
+        }
+
+        .wallet-connected {
+            background-color: #28a745;
+        }
+
+        .wallet-connected:hover {
+            background-color: #218838;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3rem 5%;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            color: #ff6600;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Tokenomics Section */
+        .tokenomics {
+            padding: 4rem 5%;
+            background-color: #121212;
+            margin: 3rem 0;
+        }
+
+        .tokenomics h2 {
+            font-size: 2.2rem;
+            color: #ff6600;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+        }
+
+        .token-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .token-card {
+            background-color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #2d2d2d;
+        }
+
+        .token-card h3 {
+            color: #ff6600;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .token-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Meme Gallery Section */
+        .meme-gallery {
+            padding: 0 5% 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+        }
+
+        .meme-card {
+            background-color: #121212;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .meme-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.2);
+        }
+
+        .meme-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .meme-caption {
+            padding: 1rem;
+            text-align: center;
+            font-size: 1rem;
+            color: #f0f0f0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid #2d2d2d;
+            font-size: 0.9rem;
+            color: #999999;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .wallet-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #121212;
+                flex-direction: column;
+                padding: 1.5rem 5%;
+                gap: 1.2rem;
+                display: none;
+                border-bottom: 1px solid #2d2d2d;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .header-actions {
+                display: none; /* Hide wallet btn on mobile menu toggle */
+            }
+
+            .mobile-wallet-btn {
+                display: block;
+                margin-top: 1.2rem;
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .tokenomics h2 {
+                font-size: 1.8rem;
+            }
+
+            .meme-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                width: 100px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .meme-card img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/7Z8X7yY.png" alt="MarsShiba Official Logo">
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">☰</div>
+
+        <nav>
+            <ul class="nav-links" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#memes">Memes</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!-- Mobile Wallet Button -->
+                <li><button class="wallet-btn mobile-wallet-btn" id="mobilePhantomBtn">Connect Phantom</button></li>
+            </ul>
+        </nav>
+
+        <!-- Desktop Wallet Button -->
+        <div class="header-actions">
+            <button class="wallet-btn" id="phantomWalletBtn">Connect Phantom</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Mars Shiba Community</h1>
+        <p>Your go-to hub for the funniest Mars-themed Shiba Inu memes – plus join our Solana-based token ecosystem! Connect your Phantom wallet to get started.</p>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section class="tokenomics" id="tokenomics">
+        <h2>MarsShiba Tokenomics</h2>
+        <div class="token-grid">
+            <div class="token-card">
+                <h3>Token Name</h3>
+                <p>MarsShiba (MSHIB)</p>
+                <p>Built on the Solana blockchain for fast, low-cost transactions.</p>
+            </div>
+            <div class="token-card">
+                <h3>Total Supply</h3>
+                <p>1,000,000,000 MSHIB</p>
+                <p>No additional minting – supply is fixed forever.</p>
+            </div>
+            <div class="token-card">
+                <h3>Transaction Fees</h3>
+                <p>2% Auto-Liquidity | 2% Community Rewards</p>
+                <p>Fees ensure stability and reward loyal holders.</p>
+            </div>
+            <div class="token-card">
+                <h3>Liquidity Lock</h3>
+                <p>Locked for 24+ Months</p>
+                <p>Provided on Raydium – secure and transparent.</p>
+            </div>
+            <div class="token-card">
+                <h3>Distribution</h3>
+                <p>60% Public Sale | 20% Liquidity | 10% Marketing | 10% Team (Vested)</p>
+            </div>
+            <div class="token-card">
+                <h3>Use Cases</h3>
+                <p>Meme Creation Contests | Exclusive Merch | Governance Voting</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meme Gallery -->
+    <section class="meme-gallery" id="memes">
+        <div class="meme-card">
+            <img src="https://i.imgur.com/5KzLbQH.jpg" alt="Shiba on Mars Rover">
+            <div class="meme-caption">"First dog on Mars – mission accomplished!"</div>
+        </div>
+        <div class="meme-card">
+            <img src="https://i.imgur.com/2P9X7tA.jpg" alt="Shiba Planning Mars Trip">
+            <div class="meme-caption">"Plotting how to convince Elon to take me to Mars"</div>
+        </div>
+        <div class="meme-card">
+            <img src="https://i.imgur.com/8RbZ1eS.jpg" alt="Mars vs Earth Shiba">
+            <div class="meme-caption">"Earth is cool, but Mars has better views"</div>
+        </div>
+        <div class="meme-card">
+            <img src="https://i.imgur.com/4TkFjLc.jpg" alt="Shiba in Space Suit">
+            <div class="meme-caption">"When your outfit is ready but the rocket isn't"</div>
+        </div>
+        <div class="meme-card">
+            <img src="https://i.imgur.com/9XsQ2dM.jpg" alt="Shiba Digging on Mars">
+            <div class="meme-caption">"Looking for treats under Mars rocks"</div>
+        </div>
+        <div class="meme-card">
+            <img src="https://i.imgur.com/6YwK3bN.jpg" alt="Shiba Star Gazing">
+            <div class="meme-caption">"That red dot? Yeah, I'm moving there"</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about">
+        <p>&copy; 2024 MarsShiba.com | All Rights Reserved | Built on Solana | Made with ❤️ for meme fans & holders worldwide</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenu');
+        const navMenu = document.getElementById('navMenu');
+        const phantomBtn = document.getElementById('phantomWalletBtn');
+        const mobilePhantomBtn = document.getElementById('mobilePhantomBtn');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.textContent = navMenu.classList.contains('active') ? '✖' : '☰';
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = document.querySelector(anchor.getAttribute('href'));
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
+                }
+            });
+        });
+
+        // Phantom Wallet Integration
+        async function connectPhantomWallet() {
+            // Check if Phantom is installed
+            if (window.solana && window.solana.isPhantom) {
+                try {
+                    // Request connection
+                    const response = await window.solana.connect();
+                    const publicKey = response.publicKey.toString();
+                    
+                    // Update button text and style
+                    updateWalletButton(`Connected: ${publicKey.slice(0, 6)}...${publicKey.slice(-4)}`);
+                    alert(`Wallet connected!\nAddress: ${publicKey}`);
+                } catch (error) {
+                    console.error('Connection failed:', error);
+                    alert('Failed to connect wallet – please try again.');
+                }
+            } else {
+                // Prompt user to install Phantom
+                if (confirm('Phantom Wallet not found – would you like to download it?')) {
+                    window.open('https://phantom.app/', '_blank');
+                }
+            }
+        }
+
+        function updateWalletButton(text) {
+            phantomBtn.textContent = text;
+            mobilePhantomBtn.textContent = text;
+            phantomBtn.classList.add('wallet-connected');
+            mobilePhantomBtn.classList.add('wallet-connected');
+        }
+
+        // Add click listeners to wallet buttons
+        phantomBtn.addEventListener('click', connectPhantomWallet);
+        mobilePhantomBtn.addEventListener('click', connectPhantomWallet);
+
+        // Check if wallet is already connected on page load
+        window.addEventListener('load', async () => {
+            if (window.solana && window.solana.isPhantom) {
+                const isConnected = await window.solana.isConnected();
+                if (isConnected) {
+                    const publicKey = window.solana.publicKey.toString();
+                    updateWalletButton(`Connected: ${publicKey.slice(0, 6)}...${publicKey.slice(-4)}`);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
